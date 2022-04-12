@@ -90,7 +90,8 @@ window.addEventListener('click', function (event) {
 
 		const productInfo = {
 			id: card.dataset.id,
-			imgSrc: card.querySelector('.product__media__img').getAttribute('src'),
+			imgSrcWeb: card.querySelector('.product__media__img').getAttribute('src'),
+			imgSrc: card.querySelector('.product__media__img').getAttribute('srcset'),
 			title: card.querySelector('.product__title').innerText,
 			price: card.querySelector('.product__price').innerText,
 			counter: card.querySelector('[data-counter]').innerText,
@@ -105,6 +106,10 @@ window.addEventListener('click', function (event) {
 			const cartItemHTML = `<div data-id="${productInfo.id}" class="shopping__cart__inner">
 								<div class="shopping__cart__media">
 									<img src="${productInfo.imgSrc}" alt="">
+									<picture>
+										<source srcset="${productInfo.imgSrcWeb}" type="image/webp">
+										<img src="${productInfo.imgSrc}" alt="">
+									</picture>
 								</div>
 								<div class="shopping__cart__info">
 									<p class="shopping__cart__info__title">${productInfo.title}</p>
